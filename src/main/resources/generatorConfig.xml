@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <!--run:mybatis-generator:generate -e-->
+    <!-- mysql-connector-java.jar的绝对路径  -->
+    <classPathEntry
+            location="C:\Maven\repository\mysql\mysql-connector-java\8.0.15\mysql-connector-java-8.0.15.jar"/>
+
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator type="com.generate.MyCommentGenerator">
+            <!--<property name="suppressAllComments" value="true"/>-->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <!-- 配置数据源 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.1.1:3306/databaseName"
+                        userId="root"
+                        password="eoner.com">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 配置生成的javabean所存放的路径和包（使用绝对路径） -->
+        <javaModelGenerator targetPackage="com.temp.bean"
+                            targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 配置生成的**Mapper.xml文件所存放的路径和包（使用绝对路径） -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 配置生成的**Mapper.java接口文件所存放的路径和包（使用绝对路径） -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.temp.dao"
+                             targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 指定我们要操作的表明和生成的javabean类名 -->
+        <table tableName="tb_demo_1" domainObjectName="tbDemo1"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+
+    </context>
+
+</generatorConfiguration>
