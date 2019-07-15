@@ -40,7 +40,7 @@ public class Generate {
         } catch (XMLParserException e) {
             e.printStackTrace();
         }
-        String resultMap = ResultMapUtil.getResultMap(TestVO.class);
+        String resultMap = ResultMapUtil.getResultMap(TestVO1.class);
         System.out.println(resultMap);
     }
 }
