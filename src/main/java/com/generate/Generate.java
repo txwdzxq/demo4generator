@@ -1,4 +1,4 @@
-package com.eoner.generate;
+package com.generate;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,12 +21,11 @@ public class Generate {
         // args = new String[]{"-configfile", "src\\main\\resources\\mybatis-generator.xml", "-overwrite"};
         try {
             List<String> warnings = new ArrayList<String>();
-            boolean overwrite = true;
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
             InputStream is = classloader.getResourceAsStream("generatorConfig.xml");
             ConfigurationParser cp = new ConfigurationParser(warnings);
             Configuration config = cp.parseConfiguration(is);
-            DefaultShellCallback callback = new DefaultShellCallback(overwrite);
+            DefaultShellCallback callback = new DefaultShellCallback(true);
             MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
             myBatisGenerator.generate(null);
         } catch (SQLException e) {
@@ -40,7 +39,7 @@ public class Generate {
         } catch (XMLParserException e) {
             e.printStackTrace();
         }
-        String resultMap = ResultMapUtil.getResultMap(TestVO1.class);
-        System.out.println(resultMap);
+        // String resultMap = ResultMapUtil.getResultMap(TestVO1.class);
+        // System.out.println(resultMap);
     }
 }

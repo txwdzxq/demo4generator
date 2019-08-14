@@ -1,4 +1,4 @@
-package com.eoner.generate;
+package com.generate;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

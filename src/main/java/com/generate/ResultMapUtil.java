@@ -1,4 +1,4 @@
-package com.eoner.generate;
+package com.generate;
 
 /**
  * @author mi zxq
